@@ -1,0 +1,18 @@
+name: Add Entry
+
+on:
+  issues:
+    types:
+      - closed
+  workflow_dispatch:
+
+jobs:
+  handle_issue:
+    if: contains(github.event.issue.labels.*.name, 'provider-request')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print issue info
+        run: |
+          echo "Issue #${{ github.event.issue.number }} was closed"
+          echo "Title: ${{ github.event.issue.title }}"
