@@ -39,8 +39,6 @@ jobs:
           mkdir -p providers
 
           {
-            echo "name = \"$provider\""
-            echo
             echo "[smtp]"
             echo "host = \"$smtp_host\""
             echo "port = $smtp_port"
