@@ -8,7 +8,7 @@ host = "imap.gmail.com"
 port = 993
 security = "SSL"
 
-oidc_discovery_endpoint = "https://accounts.google.com/.well-known/openid-configuration"
+oidc = "https://accounts.google.com/.well-known/openid-configuration"
 
 scopes = [
   "openid",
