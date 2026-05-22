@@ -10,7 +10,7 @@ host = "outlook.office365.com"
 port = 993
 security = "SSL"
 
-oidc_discovery_endpoint = ""
+oidc_discovery_endpoint = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration"
 
 scopes = [
   "openid",
