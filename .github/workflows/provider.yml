@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: Extract info
         run: |
+          content=$(echo "${{ github.event.issue.body }}")
           provider=$(echo "$content" | awk '/### Provider/{getline; getline; print}')
           smtp_host=$(echo "$content" | awk '/### SMTP Host/{getline; getline; print}')
           smtp_port=$(echo "$content" | awk '/### SMTP Port/{getline; getline; print}')
