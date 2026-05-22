@@ -39,16 +39,6 @@ jobs:
           mkdir -p providers
 
           {
-            echo "[smtp]"
-            echo "host = \"$smtp_host\""
-            echo "port = $smtp_port"
-            echo "security = \"$smtp_security\""
-            echo
-            echo "[imap]"
-            echo "host = \"$imap_host\""
-            echo "port = $imap_port"
-            echo "security = \"$imap_security\""
-            echo
             echo "oidc = \"$oidc\""
             echo
             echo "scopes = ["
@@ -58,6 +48,16 @@ jobs:
             done
 
             echo "]"
+            echo
+            echo "[smtp]"
+            echo "host = \"$smtp_host\""
+            echo "port = $smtp_port"
+            echo "security = \"$smtp_security\""
+            echo
+            echo "[imap]"
+            echo "host = \"$imap_host\""
+            echo "port = $imap_port"
+            echo "security = \"$imap_security\""
           } > "$filename"
 
           cat "$filename"
