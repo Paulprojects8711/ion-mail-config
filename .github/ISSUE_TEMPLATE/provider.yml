@@ -35,7 +35,7 @@ body:
       label: SMTP Security
       description: Encryption method used by the provider
       options:
-        - SSL
+        - SSL/TLS
         - STARTTLS
       default: 0
     validations:
