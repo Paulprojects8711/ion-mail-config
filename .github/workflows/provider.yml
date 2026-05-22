@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Extract info
+      - name: Extract info + write TOML
         run: |
           content=$(echo "${{ github.event.issue.body }}")
           provider=$(echo "$content" | awk '/### Provider/{getline; getline; print}')
@@ -32,8 +32,42 @@ jobs:
             '
           )
 
-          echo "Provider: $provider"
-          echo "SMTP Host: $smtp_host"
-          echo "IMAP Host: $imap_host"
-          echo "Scopes:"
-          printf '%s\n' "${scopes[@]}"
+          filename="providers/${provider}.toml"
+          mkdir -p providers
+
+          {
+            echo "name = \"$provider\""
+            echo
+            echo "[smtp]"
+            echo "host = \"$smtp_host\""
+            echo "port = $smtp_port"
+            echo "security = \"$smtp_security\""
+            echo
+            echo "[imap]"
+            echo "host = \"$imap_host\""
+            echo "port = $imap_port"
+            echo "security = \"$imap_security\""
+            echo
+            echo "oidc_discovery_endpoint = \"$oidc\""
+            echo
+            echo "scopes = ["
+
+            for scope in "${scopes[@]}"; do
+              echo "  \"$scope\","
+            done
+
+            echo "]"
+          } > "$filename"
+
+          cat "$filename"
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add providers/*.toml
+
+          git commit -m "Add provider entry" || echo "No changes"
+
+          git push
