@@ -11,7 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print issue info
+      - name: Extract info
         run: |
-          echo "Issue #${{ github.event.issue.number }} was closed"
-          echo "Title: ${{ github.event.issue.title }}"
+          provider=$(echo "$content" | awk '/### Provider/{getline; getline; print}')
+          smtp_host=$(echo "$content" | awk '/### SMTP Host/{getline; getline; print}')
+          smtp_port=$(echo "$content" | awk '/### SMTP Port/{getline; getline; print}')
+          smtp_security=$(echo "$content" | awk '/### SMTP Security/{getline; getline; print}')
+          imap_host=$(echo "$content" | awk '/### IMAP Host/{getline; getline; print}')
+          imap_port=$(echo "$content" | awk '/### IMAP Port/{getline; getline; print}')
+          imap_security=$(echo "$content" | awk '/### IMAP Security/{getline; getline; print}')
+          oidc=$(echo "$content" | awk '/### OIDC Discover Endpoint/{geline; print})
+
+          mapfile -t scopes < <(
+            echo "$content" |
+            awk '
+              /### Scopes/ {flag=1; next}
+              /^### / {flag=0}
+              flag && NF
+            '
+          )
+
+          echo "Provider: $provider"
+          echo "SMTP Host: $smtp_host"
+          echo "IMAP Host: $imap_host"
+          echo "Scopes:"
+          printf '%s\n' "${scopes[@]}"
