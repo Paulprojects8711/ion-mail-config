@@ -49,7 +49,7 @@ jobs:
             echo "port = $imap_port"
             echo "security = \"$imap_security\""
             echo
-            echo "oidc_discovery_endpoint = \"$oidc\""
+            echo "oidc = \"$oidc\""
             echo
             echo "scopes = ["
 
