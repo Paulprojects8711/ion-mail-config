@@ -1,3 +1,12 @@
+oidc = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration"
+
+scopes = [
+  "openid",
+  "offline_access",
+  "https://outlook.office.com/IMAP.AccessAsUser.All",
+  "https://outlook.office.com/SMTP.Send",
+]
+
 [smtp]
 host = "smtp-mail.outlook.com"
 port = 587
@@ -7,12 +16,3 @@ security = "STARTTLS"
 host = "outlook.office365.com"
 port = 993
 security = "SSL"
-
-oidc = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration"
-
-scopes = [
-  "openid",
-  "offline_access",
-  "https://outlook.office.com/IMAP.AccessAsUser.All",
-  "https://outlook.office.com/SMTP.Send",
-]
