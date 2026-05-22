@@ -1,5 +1,3 @@
-name = "outlook.com"
-
 [smtp]
 host = "smtp-mail.outlook.com"
 port = 587
