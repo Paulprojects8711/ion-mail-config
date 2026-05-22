@@ -24,7 +24,7 @@ jobs:
           imap_host=$(echo "$content" | awk '/### IMAP Host/{getline; getline; print}')
           imap_port=$(echo "$content" | awk '/### IMAP Port/{getline; getline; print}')
           imap_security=$(echo "$content" | awk '/### IMAP Security/{getline; getline; print}')
-          oidc=$(echo "$content" | awk '/### OIDC Discover Endpoint/{getline; getline; print}')
+          oidc=$(echo "$content" | awk '/### OIDC Discovery Endpoint/{getline; getline; print}')
 
           mapfile -t scopes < <(
             echo "$content" |
