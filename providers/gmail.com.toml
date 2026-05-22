@@ -1,3 +1,10 @@
+oidc = "https://accounts.google.com/.well-known/openid-configuration"
+
+scopes = [
+  "openid",
+  "https://mail.google.com/",
+]
+
 [smtp]
 host = "smtp.gmail.com"
 port = 465
@@ -7,10 +14,3 @@ security = "SSL"
 host = "imap.gmail.com"
 port = 993
 security = "SSL"
-
-oidc = "https://accounts.google.com/.well-known/openid-configuration"
-
-scopes = [
-  "openid",
-  "https://mail.google.com/",
-]
