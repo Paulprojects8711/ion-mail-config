@@ -37,7 +37,6 @@ body:
       options:
         - SSL/TLS
         - STARTTLS
-      default: 0
     validations:
       required: true
   - type: input
@@ -64,7 +63,6 @@ body:
       options:
         - SSL/TLS
         - STARTTLS
-      default: 0
     validations:
       required: true
   - type: input
