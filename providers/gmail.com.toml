@@ -2,8 +2,7 @@ oidc = "https://accounts.google.com/.well-known/openid-configuration"
 
 scopes = [
   "openid",
-  "https://www.googleapis.com/auth/gmail.readonly",
-  "https://www.googleapis.com/auth/gmail.send"
+  "https://mail.google.com/"
 ]
 
 [smtp]
