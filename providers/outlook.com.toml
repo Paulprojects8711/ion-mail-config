@@ -1,4 +1,4 @@
-oidc = "https://login.microsoftonline.com/consumers/v2.0/.well-known/openid-configuration"
+oidc = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration"
 
 scopes = [
   "openid",
