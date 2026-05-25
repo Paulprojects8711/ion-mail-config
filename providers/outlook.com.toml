@@ -4,7 +4,7 @@ scopes = [
   "openid",
   "offline_access",
   "https://outlook.office.com/IMAP.AccessAsUser.All",
-  "https://outlook.office.com/SMTP.Send",
+  "Mail.Send",
 ]
 
 [smtp]
