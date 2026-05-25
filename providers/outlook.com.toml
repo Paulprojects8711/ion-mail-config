@@ -2,7 +2,6 @@ oidc = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configu
 
 scopes = [
   "openid",
-  "email",
   "offline_access",
   "https://outlook.office.com/IMAP.AccessAsUser.All",
   "https://outlook.office.com/SMTP.Send",
